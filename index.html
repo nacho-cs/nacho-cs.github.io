@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>• mscr ranked stats browser</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body onload="autoComplete()">
+    <style>
+      @import url("https://fonts.cdnfonts.com/css/minecraftia");
+    </style>
+    <div id="header">
+      <span class="part">• mcsr ranked stats browser</span>
+      <div class="part">
+        <a href="./?q=lb" class="move-down"
+          ><span class="option">• leaderboard</span></a
+        >
+        <a href="./" class="move-down"><span class="option">• players</span></a>
+      </div>
+      <div class="part">
+        <a
+          href="https://github.com/nacho-cs/nacho-cs.github.io"
+          class="option move-down"
+          id="source-code"
+          >• source code</a
+        >
+      </div>
+    </div>
+    <div id="wrapper">
+      <span id="info">• Enter a player's ign or 'leaderboard' </span>
+      <input type="text" id="input" list="player-options" placeholder="e.g. Feinberg"/>
+      <datalist id="player-options"></datalist>
+      <div class="move-down" id="submit" onclick="getInfo(); load()">
+        • submit
+      </div>
+      <div id="output">
+        <p class="hidden info" id="player-info"></p>
+        <table id="stats" class="hidden info">
+          <tr id="stats-header">
+            <th># of Games</th>
+            <th>Win %</th>
+            <th>Elo</th>
+            <th>Place</th>
+            <th>Best W/S</th>
+            <th>Current W/S</th>
+            <th>Best Time</th>
+            <th>Last Online</th>
+          </tr>
+        </table>
+        <table id="lb" class="hidden info">
+          <tr id="lb-header">
+            <th>Place</th>
+            <th>Player</th>
+            <th>Elo</th>
+          </tr>
+        </table>
+        <p class="hidden info" id="match">Player's Matches:</p>
+        <table id="matches" class="hidden info">
+          <tr id="matches-header">
+            <th id="opponents">Opponents</th>
+            <th>Seed</th>
+            <th>Result</th>
+            <th>Final Time</th>
+            <th>Date</th>
+          </tr>
+        </table>
+        <div
+          id="show-more"
+          class="hidden info move-down"
+          onclick="getMatches()"
+        >
+          • show more
+        </div>
+        <br />
+        <br />
+        <br />
+      </div>
+      <span class="hidden" id="loading">• loading...</span>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
