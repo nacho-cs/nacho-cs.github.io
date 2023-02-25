@@ -170,7 +170,7 @@ async function getInfo() {
   hideAll();
   if (
     input.value.includes("leaderboard") ||
-    input.value.includes("lb") && input.value.length == 2 ||
+    (input.value.includes("lb") && input.value.length == 2)
   ) {
     getLb();
     load();
