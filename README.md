@@ -25,5 +25,5 @@
 
 ## Useful API endpoints to be used in combination with the MCSR ranked API
 
-- [https://api.mojang.com/users/profiles/minecraft/<player's uuid>](https://mcsrranked.com/api/users/9a8e24df4c8549d696a6951da84fa5c4): Retrieves the uuid a player from their username. Useful because the MCSR ranked API requires UUIDs.
+- [https://api.mojang.com/users/profiles/minecraft/<player's uuid>](https://mcsrranked.com/api/users/9a8e24df4c8549d696a6951da84fa5c4): Retrieves the uuid of a player from their username. Useful because the MCSR ranked API requires UUIDs.
 - [https://mc-heads.net/avatar/<player's uuid>](https://mc-heads.net/avatar/9a8e24df4c8549d696a6951da84fa5c40): Gets a players face. This can be used to display a player's skin alongside their username.
