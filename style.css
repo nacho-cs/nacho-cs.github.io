@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: #323232;
   font-family: "Minecraftia", sans-serif;
