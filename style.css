@@ -1,6 +1,6 @@
 @import url("https://fonts.cdnfonts.com/css/minecraftia");
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --light-dark-gray: #323232;
     --dark-gray: #212121;
@@ -14,6 +14,12 @@
     --dark-gray: #d3d3d3;
     --white: #212121;
   }
+} */
+
+:root {
+  --light-dark-gray: #323232;
+  --dark-gray: #212121;
+  --white: #f7fff7;
 }
 
 .light {
