@@ -250,10 +250,16 @@ async function generateChart() {
       labels: eloHistory[0],
       datasets: [
         {
-          fill: false,
+          fill: true,
           lineTension: 0,
-          backgroundColor: "#f7fff7",
-          borderColor: "#212121",
+          backgroundColor:
+            localStorage.getItem("prefers-light-theme") == "true"
+              ? "#212121"
+              : "#f7fff7",
+          borderColor:
+            localStorage.getItem("prefers-light-theme") == "true"
+              ? "#d3d3d3"
+              : "#212121",
           data: eloHistory[1],
         },
       ],
