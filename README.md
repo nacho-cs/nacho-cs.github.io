@@ -33,3 +33,4 @@
 - 2/26/23: Minor tweaks (added favicon, ranks, etc.)
 - 2/26/23: Added dark/light theme. **Uses local storage to remember the user's prefered theme, but no other data is stored.**
 - 3/3/23: Changed background color/added match type
+- 3/4/23: Added proper dark/light theme support, changed favicon, added elo graph to show elo over time.
