@@ -382,7 +382,7 @@ async function showPlayerInfo() {
 
 function toggle() {
   document.body.classList.toggle("light");
-  document.body.style.transition = "all 750ms ease-in-out";
+  document.body.style.transition = "all 500ms ease-in-out";
   document.querySelectorAll(".light").length > 0
     ? localStorage.setItem("prefers-light-theme", "true")
     : localStorage.setItem("prefers-light-theme", "false");
