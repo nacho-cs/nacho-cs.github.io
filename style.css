@@ -187,3 +187,20 @@ a:hover:not(.no-underline) {
   color: var(--dark-gray);
   text-align: center;
 }
+
+@media only screen and (max-width: 600px) {
+  .part {
+    visibility: hidden;
+    height: 1px;
+    width: 1px;
+  }
+
+  #input {
+    width: 80vw !important;
+    text-align: center;
+  }
+
+  #wrapper {
+    width: 100vw;
+  }
+}
