@@ -231,7 +231,7 @@ async function getEloHistory(player) {
       if (data[j]["score_changes"][k].uuid == uuid) {
         currentElo = calculateNewElo(
           currentElo,
-          data[j]["score_changes"][k].score
+          data[j]["score_changes"][k].change
         );
         y.push(currentElo);
       }
