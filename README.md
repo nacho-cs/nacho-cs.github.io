@@ -46,3 +46,4 @@
 - 3/4/23: Added proper dark/light theme support, changed favicon, added elo graph to show elo over time, added credit
 - 3/4/23: Added the ability to download the graph, cleaned up html/css a bit
 - 3/14/23: updated mobile ui a bit, im planning for a completely ui overhaul however
+- 3/25/23: updated to match api version 1.3
