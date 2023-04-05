@@ -48,3 +48,4 @@
 - 3/14/23: updated mobile ui a bit, im planning for a completely ui overhaul however
 - 3/25/23: updated to match api version 1.3
 - 4/4/23: fixed a bug with win percentage
+- 4/5/23: small qol changes
