@@ -61,7 +61,9 @@ async function getStats() {
     var img_url = "";
   }
   tr.innerHTML = `<td> ${stats["total_played"]} </td> <td> ${Math.round(
-    (stats.records[2].win / stats["total_played"]) * 100
+    (stats.records[2].win / stats.records[2].win +
+      stats.records[2].lose +
+      stats.records[2].draw) * 100
   )}% </td> <td style="color: ${eloColor}" title="${addRank(
     stats["elo_rate"]
   )}"> ${stats["elo_rate"]} </td> <td> ${
