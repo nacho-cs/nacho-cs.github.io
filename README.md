@@ -14,29 +14,6 @@
 - A player's name gets their stats/match history
 - 'Leaderboard'/'lb' gets the current leaderboard
 
-## Basic API usage for MSCR ranked
-
-- How to get the leaderboard: [https://mcsrranked.com/api/leaderboard](https://mcsrranked.com/api/leaderboard)
-- How to get a players stats: [https://mcsrranked.com/api/users/<player's name/uuid>](https://mcsrranked.com/api/users/9a8e24df4c8549d696a6951da84fa5c4)
-- How to get a players match history: [https://mcsrranked.com/api/users/<player's name/uuid>/matches?page=NUMBER&filter=1 OR 2 OR 3&count=NUMBER <=50](https://mcsrranked.com/api/users/9a8e24df4c8549d696a6951da84fa5c4/matches?page=0&filter=2&count=30)
-- The API request for a player's matches is paginated. Page 1 returns matches 0-19, Page 2 returns matches 20-39, etc.
-
-  - Some additional parameters beside `?page` include `?filter`:
-    | Value | What It does                 |
-    | ----- | ---------------------------- |
-    | 1     | Returns Only Classic Matches |
-    | 2     | Returns Only Ranked Matches  |
-    | 3     | Returns Only Private Matches |
-  - Also, there is the `?count` parameter. This returns a higher number of matches, up to 50.
-
-- All the API requests are GET requests. This means that you can only **get** information from the API. Also, the API is completely anonymous.
-- The API is also rate limited. This means if you send too many requests, you will be timed out.
-
-## Useful API endpoints to be used in combination with the MCSR ranked API
-
-- [https://api.mojang.com/users/profiles/minecraft/<player's name>](https://api.mojang.com/users/profiles/minecraft/Feinberg): Retrieves the uuid of a player from their username. Useful because sometimes the UUID is needed for extra requests
-- [https://mc-heads.net/avatar/<player's uuid>](https://mc-heads.net/avatar/9a8e24df4c8549d696a6951da84fa5c40): Gets a players face. This can be used to display a player's skin alongside their username. You need to use the UUID of the player, not just their name.
-
 ## Changelog
 
 - 2/24/23: U.I. Enhancements
