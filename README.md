@@ -26,3 +26,4 @@
 - 3/25/23: updated to match api version 1.3
 - 4/4/23: fixed a bug with win percentage
 - 4/5/23: small qol changes
+- 4/23/23: changed up the whole u.i. and updated to match api version 1.5
