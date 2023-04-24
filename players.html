@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>players • mcsr ranked browser</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.3/zephyr/bootstrap.min.css"
+      integrity="sha512-dcTg+pv6j02FTyko5ua8nsnARs/l4u43vmnbeVgkFWB5wdLgfUq4CEotFWOlTE4XK7FfVriWj7BrpqET/a+SJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter" />
+    <link rel="icon" href="./desmos_favicon.png" />
+  </head>
+  <style>
+    .dark:not(td) {
+      filter: invert(85%) hue-rotate(162deg);
+    }
+
+    html.dark td[style="color: #99EBFF"],
+    html.dark td[style="color: #FFD700"],
+    html.dark td[style="color: #E3E3E3"],
+    html.dark td[style="color: #252525"],
+    html.dark td[style="color: #55ff00"],
+    html.dark td[style="color: #ff0055"] {
+      filter: invert(85%) hue-rotate(180deg);
+    }
+
+    table#stats > tbody > tr > th,
+    table#stats-2 > tbody > tr > th {
+      width: 25%;
+    }
+
+    table#matches > tbody > tr > th {
+      width: 20%;
+    }
+
+    .link {
+      --bs-text-opacity: 1;
+      color: rgba(var(--bs-dark-rgb), var(--bs-text-opacity)) !important;
+      text-decoration: none;
+      padding: 0 !important;
+    }
+
+    .link:hover {
+      text-decoration: underline;
+    }
+
+    th {
+      padding: 1rem;
+    }
+  </style>
+  <body style="font-family: 'Inter', sans-serif; font-weight: 400">
+    <header
+      class="navbar navbar-expand navbar-light border-bottom user-select-none position-fixed w-100 bg-white"
+      style="z-index: 1"
+    >
+      <div class="container-fluid" style="width: 95%">
+        <a href="./" class="navbar-brand nav-link"
+          ><h5 class="my-auto">• mcsr ranked browser</h5></a
+        >
+        <ul class="navbar-nav">
+          <li class="nav-item d-none d-md-block">
+            <a href="./" class="nav-link text-dark">• leaderboard</a>
+          </li>
+          <li class="nav-item d-none d-md-block"
+            ><a href="./players.html" class="nav-link text-dark active">• players</a></li
+          >
+          <li class="nav-item d-none d-md-block">
+            <a href="./matches.html" class="nav-link text-dark">• matches</a>
+          </li>
+          <li
+            class="nav-item"
+            onclick="document.querySelector('html').classList.toggle('dark'); manageTheme()"
+            ><i class="bi-moon nav-link"></i
+          ></li>
+        </ul>
+      </div>
+    </header>
+    <div class="container-fluid border-warning" style="width: 95%">
+      <div class="row">
+        <div
+          class="col-12 col-md-10 col-lg-8 col-xl-6 text-center position-absolute start-50 translate-middle-x"
+          style="margin-top: 5rem"
+        >
+          <label for="players">• search players</label>
+          <input
+            type="text"
+            id="players"
+            placeholder="RED_LIME"
+            class="text-center form-control text-dark"
+            list="suggestions"
+          />
+          <datalist id="suggestions"> </datalist>
+          <button
+            class="btn btn-dark mt-3"
+            onclick="clearRows(); const player = document.querySelector('#players').value; getStats(player); getMatches(player); generateChart(); updateChart(player)"
+            >• submit</button
+          >
+          <div class="card mt-3 user-select-none">
+            <div class="card-body">
+              <div class="card-title text-start"><h5 id="player-title">• stats for</h5></div
+              ><table class="table border rounded" id="stats">
+                <tr>
+                  <th>games played</th>
+                  <th>win %</th>
+                  <th>elo</th>
+                  <th>place</th>
+                </tr>
+              </table>
+              <div class="card-title">
+                <ul class="d-flex justify-content-center my-auto p-0"
+                  ><a class="nav-link" id="youtube"><i class="bi-youtube"></i></a
+                  ><a class="nav-link ms-2" id="twitch"><i class="bi-twitch"> </i></a
+                  ><a class="ms-2 nav-link" id="discord"><i class="bi-discord"></i></a></ul></div
+            ></div>
+          </div>
+          <div class="card mt-3 user-select-none">
+            <div class="card-body">
+              <div class="card-title text-start"><h5>• player matches:</h5></div>
+              <table class="table border rounded" id="matches">
+                <tr>
+                  <th>opp(s)</th>
+                  <th>result</th>
+                  <th>final time</th>
+                  <th>date</th>
+                  <th></th>
+                </tr>
+              </table>
+              <button
+                class="btn btn-dark w-25 mx-auto"
+                onclick="getMatches(document.querySelector('#players').value)"
+                >• show more</button
+              >
+            </div>
+          </div>
+          <div class="card mt-3"
+            ><div class="card-body"
+              ><div class="card-body"
+                ><canvas></canvas
+                ><div class="card-footer"
+                  ><button class="btn btn-dark" onclick="downloadChart()">• download</button></div
+                ></div
+              ></div
+            ></div
+          >
+        </div>
+      </div>
+    </div>
+    <script src="players.js"></script>
+    <script>
+      const nav = document.querySelector(".navbar");
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 0) {
+          nav.classList.add("shadow-sm");
+        } else {
+          nav.classList.remove("shadow-sm");
+        }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"></script>
+  </body>
+</html>
