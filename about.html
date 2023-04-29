@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.3/zephyr/bootstrap.min.css"
+      integrity="sha512-dcTg+pv6j02FTyko5ua8nsnARs/l4u43vmnbeVgkFWB5wdLgfUq4CEotFWOlTE4XK7FfVriWj7BrpqET/a+SJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css"
+    />
+  </head>
+  <style>
+    .dark {
+      filter: invert(95%) hue-rotate(180deg);
+    }
+
+    @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@300;400");
+    .markdown-body {
+      padding: 15px;
+      font-family: "Lexend", sans-serif;
+    }
+    .markdown-body p,
+    .markdown-body li,
+    .markdown-body a,
+    .markdown-body code,
+    .markdown-body td,
+    .markdown-body blockquote {
+      font-weight: 300;
+    }
+    .markdown-body a {
+      text-decoration: none;
+      color: cornflowerblue;
+    }
+    .markdown-body h1,
+    .markdown-body h2 {
+      border-bottom: #d3d3d3 1px solid;
+      padding-bottom: 5px;
+      width: 100%;
+    }
+    .markdown-body h1,
+    .markdown-body h2,
+    .markdown-body h3,
+    .markdown-body h4,
+    .markdown-body h5,
+    .markdown-body h6,
+    .markdown-body strong,
+    .markdown-body b,
+    .markdown-body th {
+      font-weight: 400;
+    }
+    .markdown-body h1 {
+      font-size: 30px;
+    }
+    .markdown-body h2 {
+      font-size: 24px;
+    }
+    .markdown-body li {
+      margin: 5px 0;
+    }
+    .markdown-body ul,
+    .markdown-body ol {
+      margin-left: 10px;
+      margin-top: 5px;
+    }
+    .markdown-body blockquote {
+      border-left: #d3d3d3 8px solid;
+      padding-left: 10px;
+    }
+    .markdown-body pre {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .markdown-body code {
+      overflow-x: auto;
+    }
+    .markdown-body table {
+      width: 75%;
+      border: 1px solid #d3d3d3;
+      border-collapse: collapse;
+    }
+    .markdown-body th,
+    .markdown-body td {
+      text-align: center;
+      padding: 5px;
+      border: 1px solid #d3d3d3;
+    }
+    .markdown-body kbd {
+      background-color: #f5f5f5;
+      padding: 3px;
+      border-radius: 5px;
+    }
+  </style>
+  <body>
+    <header
+      class="navbar navbar-expand navbar-light border-bottom user-select-none position-fixed w-100 bg-white"
+      style="z-index: 1; opacity: 90%"
+    >
+      <div class="container-fluid" style="width: 95%">
+        <a href="./" class="navbar-brand nav-link"
+          ><h5 class="my-auto">• mcsr ranked browser</h5></a
+        >
+        <ul class="navbar-nav">
+          <li class="nav-item d-none d-md-block active">
+            <a href="./" class="nav-link text-dark">• leaderboard</a>
+          </li>
+          <li class="nav-item d-none d-md-block"
+            ><a href="./players.html" class="nav-link text-dark">• players</a></li
+          >
+          <li class="nav-item d-none d-md-block">
+            <a href="./matches.html" class="nav-link text-dark">• matches</a>
+          </li>
+          <li class="nav-item d-none d-md-block">
+            <a href="./about.html" class="nav-link active text-dark">• about</a>
+          </li>
+          <li
+            class="nav-item"
+            onclick="document.querySelector('html').classList.toggle('dark'); manageTheme()"
+            ><i class="bi-moon nav-link"></i
+          ></li>
+          <li class="nav-item dropdown d-block d-md-none">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+              ><i class="bi-list"></i
+            ></a>
+            <ul class="dropdown-menu" style="transform: translateX(-50%)">
+              <li><a href="./" class="dropdown-item text-dark">• leaderboard</a></li>
+              <li><a href="./players.html" class="dropdown-item text-dark">• players</a></li>
+              <li><a href="./matches.html" class="dropdown-item text-dark">• matches</a></li>
+              <li><a href="./about.html" class="dropdown-item text-dark">• about</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <div class="container-fluid">
+      <div class="row">
+        <div
+          class="col-12 col-md-10 col-lg-8 col-xl-6 text-center position-absolute start-50 translate-middle-x"
+          style="top: 5rem"
+        >
+          <div class="card p-3 shadow-sm">
+            <div class="card-body text-start markdown-body">
+              <div class="card-title text-start"><h1 class="my-auto">About:</h1></div
+              ><h2 id="why-i-created-this-website">Why I created this website?</h2>
+              <ul>
+                <li
+                  >In the beginning, I created this website as a project to become more familiar
+                  with js and frontend development in general</li
+                >
+                <li
+                  >However, people then started to actually use the website, so I actually had to
+                  maintain it</li
+                >
+                <li
+                  >Keep in mind that I&#39;m still a student, and I have schoolwork to do, so
+                  I&#39;m not going to be constantly keeping the website up to date</li
+                >
+              </ul>
+              <h2 id="my-main-goals">My main goals</h2>
+              <ul>
+                <li>I want people to have as much information as they can about MCSR Ranked.</li>
+                <li>I want to give that information in a way that is easily accessible</li>
+              </ul>
+              <h2 id="how-can-i-support-you">How can I support you?</h2>
+              <ul>
+                <li
+                  >Right now, the best thing you can do is to report any bugs and give any
+                  suggestions to me. You can do this be DMing on discord (NachoCS#9755) or by filing
+                  an issue in the
+                  <a href="https://github.com/nacho-cs/nacho-cs.github.io">github repo</a></li
+                >
+                <li>Please make sure to be descriptive</li>
+                <li>Other than that, you can spread the word about this</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    // const nav = document.querySelector(".navbar");
+    // window.addEventListener("scroll", () => {
+    //   if (window.pageYOffset > 0) {
+    //     nav.classList.add("shadow-sm");
+    //   } else {
+    //     nav.classList.remove("shadow-sm");
+    //   }
+    // });
+
+    function manageTheme() {
+      localStorage.setItem(
+        "prefers-light-theme",
+        !document.querySelector("html").classList.contains("dark")
+      );
+    }
+
+    if (localStorage.getItem("prefers-light-theme") === "true")
+      document.querySelector("html").classList.remove("dark");
+  </script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"
+  ></script>
+</html>

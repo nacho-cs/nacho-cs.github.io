@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>leaderboard • mcsr ranked browser</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.3/zephyr/bootstrap.min.css"
+      integrity="sha512-dcTg+pv6j02FTyko5ua8nsnARs/l4u43vmnbeVgkFWB5wdLgfUq4CEotFWOlTE4XK7FfVriWj7BrpqET/a+SJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend" />
+    <link rel="icon" href="./desmos_favicon.png" />
+    <style>
+      .dark {
+        filter: invert(95%) hue-rotate(180deg);
+      }
+
+      html.dark td[style="color: #99EBFF"],
+      html.dark td[style="color: #FFD700"],
+      html.dark td[style="color: #E3E3E3"],
+      html.dark td[style="color: #252525"] {
+        filter: invert(95%) hue-rotate(180deg);
+      }
+
+      .card#elo > .card-body > table > tbody > tr > th {
+        width: 33.33%;
+      }
+
+      .card#runs > .card-body > table > tbody > tr > th {
+        width: 25%;
+      }
+
+      ul.d-flex {
+        padding: 0;
+      }
+
+      .link {
+        --bs-text-opacity: 1;
+        color: rgba(var(--bs-dark-rgb), var(--bs-text-opacity)) !important;
+        text-decoration: none;
+      }
+
+      .link:hover {
+        text-decoration: underline;
+      }
+
+      td {
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+      }
+    </style>
+  </head>
+  <body style="font-family: 'Lexend', sans-serif; font-weight: 400">
+    <header
+      class="navbar navbar-expand navbar-light border-bottom user-select-none position-fixed w-100 bg-white"
+      style="z-index: 1; opacity: 90%"
+    >
+      <div class="container-fluid" style="width: 95%">
+        <a href="./" class="navbar-brand nav-link"
+          ><h5 class="my-auto">• mcsr ranked browser</h5></a
+        >
+        <ul class="navbar-nav">
+          <li class="nav-item d-none d-md-block active">
+            <a href="./" class="nav-link text-dark active">• leaderboard</a>
+          </li>
+          <li class="nav-item d-none d-md-block"
+            ><a href="./players.html" class="nav-link text-dark">• players</a></li
+          >
+          <li class="nav-item d-none d-md-block">
+            <a href="./matches.html" class="nav-link text-dark">• matches</a>
+          </li>
+          <li class="nav-item d-none d-md-block">
+            <a href="./about.html" class="nav-link text-dark">• about</a>
+          </li>
+          <li
+            class="nav-item"
+            onclick="document.querySelector('html').classList.toggle('dark'); manageTheme()"
+            ><i class="bi-moon nav-link"></i
+          ></li>
+          <li class="nav-item dropdown d-block d-md-none">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+              ><i class="bi-list"></i
+            ></a>
+            <ul class="dropdown-menu" style="transform: translateX(-50%)">
+              <li><a href="./" class="dropdown-item text-dark">• leaderboard</a></li>
+              <li><a href="./players.html" class="dropdown-item text-dark">• players</a></li>
+              <li><a href="./matches.html" class="dropdown-item text-dark">• matches</a></li>
+              <li><a href="./about.html" class="dropdown-item text-dark">• about</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <div class="container-fluid" style="width: 95%">
+      <div class="row">
+        <div
+          class="col-12 col-md-10 col-lg-8 col-xl-6 text-center position-absolute start-50 translate-middle-x z-0"
+          style="margin-top: 5rem"
+        >
+          <ul class="d-flex justify-content-center">
+            <button
+              class="btn btn-dark mx-2"
+              onclick="document.querySelector('#elo').classList.remove('visually-hidden'); document.querySelector('#runs').classList.add('visually-hidden')"
+              >• elo</button
+            >
+            <button
+              class="btn btn-dark mx-2"
+              onclick="document.querySelector('#elo').classList.add('visually-hidden'); document.querySelector('#runs').classList.remove('visually-hidden')"
+              >• runs</button
+            >
+          </ul>
+          <div class="card user-select-none p-2" id="elo">
+            <div class="card-body">
+              <div class="card-title"><h4>• elo leaderboard</h4></div>
+              <table class="table mt-2 border" id="elo-table">
+                <tr>
+                  <th>place</th>
+                  <th>player</th>
+                  <th>elo</th>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="card visually-hidden user-select-none p-2" id="runs">
+            <div class="card-body">
+              <div class="card-title"><h4>• runs leaderboard</h4></div>
+              <table class="table mt-2 border" id="runs-table">
+                <tr>
+                  <th>place</th>
+                  <th>player</th>
+                  <th>time</th>
+                  <th>date</th>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div></div
+    >
+  </body>
+  <script>
+    // const nav = document.querySelector(".navbar");
+    // window.addEventListener("scroll", () => {
+    //   if (window.pageYOffset > 0) {
+    //     nav.classList.add("shadow-sm");
+    //   } else {
+    //     nav.classList.remove("shadow-sm");
+    //   }
+    // });
+  </script>
+  <script src="script.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"
+  ></script>
+</html>
