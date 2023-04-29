@@ -1,5 +1,4 @@
 const url = "https://mcsrranked.com/api";
-let uuid = "";
 let matches = [];
 
 if (localStorage.getItem("prefers-light-theme") === "true")
@@ -89,6 +88,7 @@ async function getUUID(user) {
 }
 
 async function getMatches(user) {
+  const uuid = await getUUID(user);
   const offset = document.querySelectorAll(".match").length / 20;
   // filter=2 is temporary
   if (Number.isInteger(offset)) {
