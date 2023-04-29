@@ -28,3 +28,4 @@
 - 4/5/23: small qol changes
 - 4/23/23: changed up the whole u.i. and updated to match api version 1.5
 - 4/24/23: a lot of small tweaks: changed the font to inter, changed from chart.xkcd to chart.js, automatically applies dark mode, cleaned up u.i., applies theme automatically, added the ability to download images, made the color of elo more visible
+- 4/28/23: u.i. enhancements, bug fixes, added the about section, added a latest match section, made the elo history graph correspond to how many runs are shown therefore reducing the number of API calls needed
