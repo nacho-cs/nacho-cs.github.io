@@ -82,9 +82,9 @@ async function getStats(user) {
 }
 
 async function getUUID(user) {
-  let res = await fetch(`https://playerdb.co/api/player/minecraft/${user}`);
+  let res = await fetch(`https://api.mojang.com/users/profiles/minecraft/${user}`)
   res = await res.json();
-  return res.data.player["raw_id"];
+  return res.id
 }
 
 async function getMatches(user) {
