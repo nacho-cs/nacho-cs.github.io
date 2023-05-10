@@ -65,14 +65,14 @@ async function getStats(user) {
   tr2.classList.add("tr");
   document.querySelector("#stats").appendChild(tr2);
   document.querySelector("#youtube").classList.remove("visually-hidden");
-  document.querySelector("#twitch").classList.remove("#visually-hidden");
+  document.querySelector("#twitch").classList.remove("visually-hidden");
   document.querySelector("#discord").classList.remove("visually-hidden");
   document.querySelector("#youtube").href = res.connections.youtube
     ? `https://youtube.com/channel/${res.connections.youtube.id}`
     : document.querySelector("#youtube").classList.add("visually-hidden");
   document.querySelector("#twitch").href = res.connections.twitch
     ? `https://twitch.com/${res.connections.twitch.name}`
-    : document.querySelector("#twitch").classList.add("#visually-hidden");
+    : document.querySelector("#twitch").classList.add("visually-hidden");
   document.querySelector("#discord").href = res.connections.discord
     ? `https://discordlookup.com/user/${res.connections.discord.id}`
     : document.querySelector("#discord").classList.add("visually-hidden");
@@ -82,9 +82,9 @@ async function getStats(user) {
 }
 
 async function getUUID(user) {
-  let res = await fetch(`https://playerdb.co/api/player/minecraft/${user}`);
+  let res = await fetch(`https://api.mojang.com/users/profiles/minecraft/${user}`)
   res = await res.json();
-  return res.data.player["raw_id"];
+  return res.id
 }
 
 async function getMatches(user) {
